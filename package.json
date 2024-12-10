@@ -1,0 +1,15 @@
+{
+  "name": "aot24",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "day07a": "NODE_OPTIONS='--max_old_space_size=16384' tsc day07a/index.ts --diagnostics --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
