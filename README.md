@@ -12,3 +12,13 @@ day07a/index.ts:1411:7 - error TS2322: Type '"We need the facts, Mike!"' is not
 assignable to type '1708857123053'.
           Solution: ^^^^^^^^^^^^^
 ```
+
+## Day 07, part 2
+
+**Run:** `npm run day07b` \
+**Result:**
+```
+day07b/index.ts:1411:7 - error TS2322: Type '"We need the facts, Mike!"' is not 
+assignable to type '189207836795655'.
+          Solution: ^^^^^^^^^^^^^^^
+```

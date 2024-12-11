@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "day07a": "NODE_OPTIONS='--max_old_space_size=16384' tsc day07a/index.ts --extendedDiagnostics --noEmit"
+    "day07a": "NODE_OPTIONS='--max_old_space_size=16384' tsc day07a/index.ts --extendedDiagnostics --noEmit",
+    "day07b": "NODE_OPTIONS='--max_old_space_size=16384' tsc day07b/index.ts --extendedDiagnostics --noEmit"
   },
   "keywords": [],
   "author": "",

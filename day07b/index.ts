@@ -3,6 +3,7 @@ import { CompareDigits } from "../utils/compare";
 import { Digit, ToDigits, Join } from "../utils/digit";
 import { DivideDigits } from "../utils/divide";
 import { SubDigits } from "../utils/subtract";
+import { TrimEnd } from "../utils/trim";
 
 // The inputs are chunked into smaller parts to avoid hitting the type limits
 import {
@@ -58,7 +59,7 @@ type InnerTest<
   T extends Digit[],
   Head extends Digit[][],
   Last extends Digit[],
-  Step extends 0 | 1 | 2
+  Step extends 0 | 1 | 2 | 3
 > = {
   // Test multiplication (T % Last == 0 && Test<T / Last, Head>)
   0: DivideDigits<T, Last> extends [
@@ -77,8 +78,15 @@ type InnerTest<
       : // Fall through if that fails
         InnerTest<T, Head, Last, 2>
     : InnerTest<T, Head, Last, 2>;
+  // Test concatenation (T == X || Last && Test<X, Head>)
+  2: TrimEnd<T, Last> extends [...infer X extends Digit[]]
+    ? Test<X, Head> extends true
+      ? true
+      : // Fall through if that fails
+        InnerTest<T, Head, Last, 3>
+    : InnerTest<T, Head, Last, 3>;
   // Test failed
-  2: false;
+  3: false;
 }[Step];
 
 type TestedHelper<T extends string[]> = {
@@ -371,5 +379,5 @@ type Result = Join<
   ? R
   : never;
 
-// The solution is emitted as a type error in the following line
+  // The solution is emitted as a type error in the following line
 const result: Result = "We need the facts, Mike!";
